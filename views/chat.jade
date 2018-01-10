@@ -1,0 +1,114 @@
+extends layout
+block content
+
+  //External Libreries for Emojis
+  link(rel="stylesheet" type="text/css" href="https://wedgies.github.io/jquery-emoji-picker/css/jquery.emojipicker.css")  
+  script(type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js")
+  script(type="text/javascript" src="https://wedgies.github.io/jquery-emoji-picker/js/jquery.emojipicker.js")
+  
+  //Emojis Data
+  link(rel="stylesheet" type="text/css" href="https://wedgies.github.io/jquery-emoji-picker/css/jquery.emojipicker.a.css")
+  script(type="text/javascript" src="https://wedgies.github.io/jquery-emoji-picker/js/jquery.emojipicker.a.js")
+  
+  script(type="text/javascript").
+    $(document).ready(function(e) 
+    {              
+      $('#text-custom-trigger').emojiPicker({
+        width: '300px',
+        height: '200px',
+        button: false
+      });
+
+      $('#mensaje').emojiPicker();
+      $('#msg').emojiPicker();  
+
+      $('#input-custom-size').emojiPicker({
+        width: '300px',
+        height: '200px'
+      });
+
+      $('#input-left-position').emojiPicker({
+        position: 'left'
+      });
+
+      $('#trigger').click(function(e) {
+        e.preventDefault();
+        $('#text-custom-trigger').emojiPicker('toggle');
+      });
+    }); 
+
+  //- style(type="text/css").
+  //-   #emojiPickerWrap{
+  //-     margin:10px 0 0 0;
+  //-   }
+
+  //-   .emojiPickerIcon.black{
+  //-     width: 21px;
+  //-     height: 21px;
+  //-   }
+
+  //-   .field{ 
+  //-     padding: 20px 0;
+  //-   }
+
+  //-   textarea{ 
+  //-     width: 400px;
+  //-     height: 200px; 
+  //-   }  
+
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+  header
+    div.titulo
+      h1 DEE-Chat
+
+  section.wrap
+    div#contenedorImagen
+      img#imagenPerfil(src="http://localhost:3000/images/default.jpg" style="height: 100px; width:100px")
+      br
+      input#upload-input(type="file" accept="image/gif, image/jpeg, image/png, image/jpg")
+      button#upload-btn(type="button") Subir Imagen Perfil
+
+    div#contenedorEstados
+      form#estados(action="javascript:void(0);")
+        label Estado  
+        select#estado(name="estado") 
+          option(value="disponible" selected) Disponible
+          option(value="desconectado") Desconectado  
+          option(value="ausente") Ausente
+        input(type="submit") 
+
+  div#caja2
+    div.subtitulo
+      h2 Conectados
+    ul#usuarios
+
+  div#caja1    
+    div#titmens.subtitulo
+      h2 Mensajes
+
+    form#form_nick(action="javascript:void(0);")
+      input#nick(type="text", size="50")
+      input.botones(type="submit", value="Ingresar nick")
+
+    div#mensajes
+    form#form_mensaje(action="javascript:void(0);")
+      input#mensaje(type="text", class="emoji1 emojiable-option" style="width:350px")      
+      input.botones(type="submit", value="Enviar mensaje")
+        
+    form#archivos(action="javascript:void(0);")
+      input#selectArchivo(type="file")
+      button#enviarArchivo(type="button") Enviar Archivo
+  
+  section.priv_mens
+
+    div#mensajesPrivados
+      div.subtitulo
+        h2 Mensajes Privados
+
+    div#enviarMensaje
+      form.menuprivados#privates(action="javascript:void(0);")
+        input#username(type="text", placeholder="Nombre de Usuario")        
+        input.cuadro_mensaje#msg(type="text", placeholder="Mensaje")        
+        input.botones(type="submit", value="Enviar Mensaje Privado")  
+    script(type="text/javascript", src="/javascripts/chat_cliente.js")
